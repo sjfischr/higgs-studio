@@ -1,0 +1,17 @@
+# Core app
+gradio>=4.0.0
+python-dotenv>=1.0.0
+
+# Model runtime
+torch          # install the CUDA build from pytorch.org for your GPU
+torchaudio
+transformers>=4.44.0
+accelerate
+
+# Audio I/O
+soundfile
+numpy
+
+# Model downloading
+huggingface_hub>=0.20.0
+hf_xet         # faster HuggingFace downloads (optional but nice)
