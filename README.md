@@ -32,7 +32,7 @@ Most local TTS front-ends give you a single text box and call it a day, which me
 ## Quick start
 
 ```bash
-git clone https://github.com/<you>/higgs-studio.git
+git clone https://github.com/sjfischr/higgs-studio.git
 cd higgs-studio
 pip install -r requirements.txt        # install the CUDA build of torch from pytorch.org
 python app.py
@@ -130,9 +130,9 @@ This project ships **no watermarking or identity verification** — it's a local
 
 ## License & attribution
 
-- **Higgs Studio code:** [choose one — e.g. MIT] © its contributors.
+- **Higgs Studio code:** [MIT] © its contributors.
 - **Higgs Audio v3 model:** governed by the **Boson Higgs TTS 3 Research and Non-Commercial License.** Personal, non-commercial, self-hosted use only. **Commercial, hosted, or revenue-generating use requires a separate license from [Boson AI](https://www.boson.ai/).** This repo is non-commercial by design.
-- **Original Gradio app:** adapted from [`multimodalart/higgs-audio-v3-tts`](https://huggingface.co/spaces/multimodalart/higgs-audio-v3-tts). 
+- **Original Gradio app:** adapted from [`multimodalart/higgs-audio-v3-tts`](https://huggingface.co/spaces/multimodalart/higgs-audio-v3-tts).   
 - **Moonshine ASR:** [`UsefulSensors/moonshine-base`](https://huggingface.co/UsefulSensors/moonshine-base), used for reference-clip transcription.
 
 By using this software you agree to the model license and to the responsible-use terms above.
