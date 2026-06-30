@@ -15,6 +15,15 @@ returns a mono 24 kHz float32 waveform.
 import os
 import logging
 import sys
+import warnings
+
+# Suppress StarletteDeprecationWarning that fires inside gradio/routes.py due to
+# a starlette version mismatch — nothing we can fix in our own code.
+warnings.filterwarnings(
+    "ignore",
+    message="'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated",
+    category=DeprecationWarning,
+)
 
 import torch
 import torchaudio
@@ -194,7 +203,9 @@ def synthesize(text, reference_audio, reference_text, temperature, top_p, top_k,
     audio = model.generate_speech(text, tokenizer, **kwargs)
     if audio.numel() == 0:
         raise gr.Error("Generation produced no audio — try again or adjust the text.")
-    return (_SR, audio.numpy())
+    # Gradio expects int16 for numpy audio; avoids the float32 conversion warning.
+    pcm = (audio.numpy() * 32767).clip(-32768, 32767).astype("int16")
+    return (_SR, pcm)
 
 
 # --- Expression-token helpers -------------------------------------------------
